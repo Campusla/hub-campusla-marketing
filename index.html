@@ -3,180 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusLA - Hub de Ventas Pro</title>
+    <title>CampusLA - Portafolio 12 Activos</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        :root {
-            --azul-oscuro: #000b1a;
-            --azul-card: #002D54; 
-            --verde-neon: #39FF14;
-            --cian: #00BEF2;
-            --blanco: #FFFFFF;
+        :root { --azul: #000b1a; --verde: #39FF14; --cian: #00BEF2; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--azul); color: white; margin: 0; padding: 20px; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; justify-items: center; padding-top: 20px; }
+        
+        /* PIEZA NEÓN LIMPIA */
+        .card { 
+            width: 350px; height: 480px; 
+            background: linear-gradient(180deg, #001a33 0%, #002D54 100%); 
+            border: 3px solid var(--verde); border-radius: 20px; 
+            overflow: hidden; display: flex; flex-direction: column; 
+            position: relative; box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
         }
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: var(--azul-oscuro);
-            color: var(--blanco);
-            margin: 0; padding: 20px; text-align: center;
-        }
+        .header { background: rgba(255,255,255,0.1); padding: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-c { width: 100px; height: 40px; object-fit: contain; background: white; border-radius: 5px; padding: 2px; }
 
-        .header-main { color: var(--cian); margin-bottom: 30px; }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 40px; justify-items: center; padding-top: 30px;
-        }
-
-        /* PIEZA NEÓN QUE TE GUSTÓ (SIN LOGOS EXTERNOS) */
-        .pieza-card {
-            width: 360px;
-            height: 500px;
-            background: linear-gradient(180deg, #001a33 0%, var(--azul-card) 100%);
-            border: 3px solid var(--verde-neon);
-            border-radius: 25px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 0 30px rgba(57, 255, 20, 0.3);
-        }
-
-        .header-card {
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            height: 60px;
-        }
-
-        /* CAJA BLANCA PARA QUE EL JPG RESALTE IMPECABLE */
-        .logo-c { 
-            width: 100px; 
-            height: 40px; 
-            object-fit: contain; 
-            background: white; 
-            border-radius: 5px; 
-            padding: 3px;
-        }
-
-        .content {
-            flex-grow: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        h2 { font-size: 1.8rem; margin: 10px 0; color: var(--cian); font-weight: 800; text-transform: uppercase; line-height: 1.1; }
-
-        .precio { 
-            font-size: 3rem; 
-            font-weight: 900; 
-            color: var(--verde-neon); 
-            margin: 15px 0;
-            text-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
-        }
-
-        .cta-button {
-            background: var(--verde-neon);
-            color: var(--azul-card);
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            text-decoration: none;
-            margin-top: 15px;
-        }
-
-        .footer-card {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 15px;
-            font-size: 0.6rem;
-            border-top: 1px solid rgba(57, 255, 20, 0.2);
-            line-height: 1.4;
-        }
-
-        .footer-card b { color: var(--verde-neon); }
-
-        .download-btn {
-            margin-top: 15px;
-            padding: 10px 25px;
-            background: var(--cian);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
+        .main { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
+        h2 { font-size: 1.8rem; color: var(--cian); margin: 5px 0; text-transform: uppercase; font-weight: 800; }
+        .price { font-size: 3rem; color: var(--verde); font-weight: 900; margin: 10px 0; text-shadow: 0 0 10px rgba(57,255,20,0.5); }
+        
+        .btn-wa { background: var(--verde); color: #002D54; padding: 10px 20px; border-radius: 50px; font-weight: bold; text-decoration: none; font-size: 0.8rem; margin-top: 10px; }
+        
+        .footer { background: rgba(0,0,0,0.5); padding: 10px; font-size: 0.6rem; border-top: 1px solid rgba(57,255,20,0.2); }
+        .dl-btn { margin-top: 15px; padding: 10px 20px; background: var(--cian); border: none; border-radius: 10px; color: white; cursor: pointer; font-weight: bold; margin-bottom: 40px; }
     </style>
 </head>
 <body>
-
-    <div class="header-main">
-        <h1>PORTAFOLIO OFICIAL CAMPUSLA</h1>
-        <p>12 Activos de Clase Mundial - Precios Filtrados</p>
-    </div>
+    <h1 style="color:var(--cian)">PORTAFOLIO OFICIAL CAMPUSLA</h1>
+    <p>12 Activos de Clase Mundial</p>
 
     <div id="portfolio-grid" class="grid"></div>
 
     <script>
-        // Los 12 productos con precios ajustados (+350k) que pediste [cite: 2026-02-10]
         const marcas = [
-            { id: 1, n: "TOEFL ITP", p: "$ 930.000" },
-            { id: 2, n: "TOEFL iBT", p: "$ 1.500.000" },
-            { id: 3, n: "OTE OXFORD", p: "$ 970.000" },
-            { id: 4, n: "PEARSON VUE", p: "$ 850.000" },
-            { id: 5, n: "BENCHMARK", p: "$ 780.000" },
-            { id: 6, n: "TOEIC", p: "$ 820.000" },
-            { id: 7, n: "VUE CERTIFIED", p: "$ 1.200.000" }, // Google, Oracle, Cisco, Amazon, etc.
-            { id: 8, n: "GEP EUROPA", p: "$ 1.850.000" },
-            { id: 9, n: "TOEIC BY ETS", p: "$ 890.000" },
-            { id: 10, n: "NAT-GEO LEARNING", p: "$ 1.800.000" },
-            { id: 11, n: "TRACK TEST", p: "$ 650.000" },
-            { id: 12, n: "TRINITY LONDON", p: "$ 800.000" }
+            { n: "TOEFL ITP", p: "$ 930.000" },
+            { n: "TOEFL iBT", p: "$ 1.500.000" },
+            { n: "OTE OXFORD", p: "$ 970.000" },
+            { n: "PEARSON VUE", p: "$ 850.000" },
+            { n: "BENCHMARK", p: "$ 780.000" },
+            { n: "TOEIC PEARSON", p: "$ 820.000" },
+            { n: "CERTIFICACIONES VUE", p: "$ 1.200.000" },
+            { n: "GEP EUROPA", p: "$ 1.850.000" },
+            { n: "TOEIC BY ETS", p: "$ 890.000" },
+            { n: "NAT-GEO LEARNING", p: "$ 1.800.000" },
+            { n: "TRACK TEST", p: "$ 650.000" },
+            { n: "TRINITY LONDON", p: "$ 800.000" }
         ];
 
         const grid = document.getElementById('portfolio-grid');
 
-        marcas.forEach(m => {
-            const cardId = `pieza-${m.id}`;
+        marcas.forEach((m, i) => {
             const div = document.createElement('div');
-            div.style.display = "flex";
-            div.style.flexDirection = "column";
-            div.style.alignItems = "center";
+            div.style.display = "flex"; div.style.flexDirection = "column";
             div.innerHTML = `
-                <div id="${cardId}" class="pieza-card">
-                    <div class="header-card">
+                <div id="card-${i}" class="card">
+                    <div class="header">
                         <img src="logocampus.jpg" class="logo-c" onerror="this.src='https://www.campuslatinoamerica.edu.co/img/logo.png'">
-                        <span style="font-size:0.55rem; color:var(--verde-neon); font-weight:bold; letter-spacing:1px;">HUB COLOMBIA</span>
+                        <span style="font-size:0.5rem; font-weight:bold; color:var(--verde);">COLOMBIA</span>
                     </div>
-                    <div class="content">
-                        <h2>${m.n}</h2>
-                        <div class="precio">${m.p}</div>
-                        <a href="https://wa.me/573144365569?text=Hola%20CampusLA,%20quiero%20más%20info%20de%20${m.n}" target="_blank" class="cta-button">CERTIFÍCATE YA</a>
+                    <div class="main">
+                        <h2 style="font-size: 1.4rem;">${m.n}</h2>
+                        <div class="price">${m.p}</div>
+                        <a href="https://wa.me/573144365569" class="btn-wa">CERTIFÍCATE YA</a>
                     </div>
-                    <div class="footer-card">
-                        <b>DE CLASE MUNDIAL</b> | Hub de Educación <br>
-                        WhatsApp: 3144365569 | www.campuslatinoamerica.edu.co<br>
+                    <div class="footer">
+                        <b>HUB DE EDUCACIÓN GLOBAL</b><br>
                         NEQUI - RAPPI - FACEBOOK - CAMPUSLA
                     </div>
                 </div>
-                <button class="download-btn" onclick="descargar('${cardId}', '${m.n}')">Descargar Imagen (Marketing)</button>
+                <button class="dl-btn" onclick="descargar('card-${i}', '${m.n}')">Generar Imagen</button>
             `;
-            container.appendChild(div);
+            grid.appendChild(div);
         });
-
-        const grid = document.getElementById('portfolio-grid');
 
         function descargar(id, nombre) {
             const el = document.getElementById(id);
-            // useCORS activado para el logo de CampusLA
             html2canvas(el, { useCORS: true, scale: 2 }).then(canvas => {
                 let link = document.createElement('a');
                 link.download = `CampusLA-${nombre}.png`;
