@@ -3,77 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusLA - Future Hub</title>
+    <title>CampusLA - Future Hub 2026</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
-            --bg-deep: #000814;
-            --neon-green: #39FF14;
-            --neon-blue: #00D2FF;
-            --glass: rgba(255, 255, 255, 0.05);
+            --fondo: #000814;
+            --neon-azul: #00D2FF;
+            --neon-verde: #39FF14;
+            --tarjeta: #001d3d;
         }
 
         body {
-            font-family: 'Orbitron', 'Segoe UI', sans-serif;
-            background: radial-gradient(circle at center, #001d3d 0%, var(--bg-deep) 100%);
+            background-color: var(--fondo);
             color: white;
-            margin: 0; padding: 40px 20px;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0; padding: 40px 10px;
             text-align: center;
         }
 
-        h1 { color: var(--neon-blue); text-shadow: 0 0 15px var(--neon-blue); letter-spacing: 4px; }
+        h1 { color: var(--neon-azul); text-shadow: 0 0 10px var(--neon-azul); margin-bottom: 40px; }
 
-        .grid {
+        .contenedor-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 40px; justify-items: center; max-width: 1400px; margin: 0 auto;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 35px;
+            justify-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
         }
 
-        /* CARD FUTURISTA */
-        .card {
-            width: 360px; height: 550px;
-            background: linear-gradient(145deg, #001220, #000814);
-            border: 2px solid var(--neon-blue);
-            border-radius: 30px;
-            position: relative; overflow: hidden;
-            display: flex; flex-direction: column;
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.2);
+        /* DISEÑO FUTURISTA NEÓN */
+        .pieza {
+            width: 350px;
+            height: 520px;
+            background: linear-gradient(180deg, #001220 0%, var(--tarjeta) 100%);
+            border: 2px solid var(--neon-azul);
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+            overflow: hidden;
         }
 
-        .card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
-            background: var(--neon-blue); box-shadow: 0 0 15px var(--neon-blue);
+        .pieza::after {
+            content: ''; position: absolute; bottom: 0; width: 100%; height: 4px;
+            background: var(--neon-verde); box-shadow: 0 0 15px var(--neon-verde);
         }
 
-        .header {
-            padding: 20px; display: flex; justify-content: space-between; align-items: center;
-            background: var(--glass); border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+        .cabezote {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.1);
         }
 
-        /* CAJA PARA TU LOGO JPG */
-        .logo-box { background: white; padding: 5px 12px; border-radius: 10px; display: flex; align-items: center; }
-        .logo-c { height: 35px; object-fit: contain; }
+        /* CAJA PARA TU LOGOCAMPUS.JPG */
+        .caja-logo {
+            background: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            display: flex; align-items: center;
+        }
+        .img-campus { height: 35px; object-fit: contain; }
 
-        .main { flex-grow: 1; padding: 30px 20px; display: flex; flex-direction: column; justify-content: center; }
+        .cuerpo {
+            flex-grow: 1;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .etiqueta { color: var(--neon-azul); font-size: 0.7rem; font-weight: bold; letter-spacing: 2px; }
+        h2 { font-size: 1.5rem; margin: 15px 0; line-height: 1.2; text-transform: uppercase; }
         
-        .tag { color: var(--neon-blue); font-size: 0.7rem; font-weight: bold; letter-spacing: 2px; margin-bottom: 10px; }
-        h2 { font-size: 1.8rem; margin: 0; color: white; text-transform: uppercase; }
-        
-        .price { 
-            font-size: 3.2rem; font-weight: 900; color: var(--neon-green); 
-            margin: 20px 0; text-shadow: 0 0 20px rgba(57, 255, 20, 0.4); 
+        .precio-grande { 
+            font-size: 3rem; 
+            font-weight: 900; 
+            color: var(--neon-verde); 
+            text-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+            margin: 15px 0;
         }
 
-        .steps { font-size: 0.8rem; color: #a0a0a0; margin-bottom: 25px; text-align: left; padding-left: 15px; }
-
-        .btn-wa { 
-            background: var(--neon-green); color: black; padding: 15px; 
-            border-radius: 50px; font-weight: 900; text-decoration: none;
-            box-shadow: 0 0 15px var(--neon-green); transition: 0.3s;
+        .wa-link {
+            background: var(--neon-verde);
+            color: #000;
+            padding: 12px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-top: 10px;
         }
 
-        .footer { background: rgba(0,0,0,0.4); padding: 15px; font-size: 0.6rem; color: var(--neon-blue); }
+        .pie {
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            font-size: 0.6rem;
+            color: var(--neon-azul);
+        }
 
-        .dl-btn {
-            margin-top: 20px; background: transparent; border: 1px solid var(--neon-blue);
-            color: var(--neon-blue); padding:
+        .boton-descarga {
+            margin-top: 15px;
+            background: transparent;
+            border: 1px solid var(--neon-azul);
+            color: var(--neon-azul);
+            padding: 8px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CAMPUSLA • GLOBAL HUB</h1>
+
+    <div id="grid-principal" class="contenedor-grid"></div>
+
+    <script>
+        // Los 12 nombres exactos que me pasaste con los precios filtrados
+        const productos = [
+            { t: "TOEFL ITP – ETS", p: "$ 930.000" },
+            { t: "TOEFL iBT – ETS", p: "$ 1.500.000" },
+            { t: "OTE – OXFORD", p: "$ 970.000" },
+            { t: "PEARSON – VUE", p: "$ 850.000" },
+            { t: "BENCHMARK – PEARSON", p: "$ 780.000" },
+            { t: "TOEIC – PEARSON", p: "$ 820.000" },
+            { t: "CERTIFICACIONES VUE (Google, Amazon, Cisco, etc)", p: "$ 1.200.000" },
+            { t: "GEP – UNIVERSIDADES EUROPA", p: "$ 1.850.000" },
+            { t: "TOEIC BY ETS", p: "$ 890.000" },
+            { t: "NATIONAL GEOGRAPHIC LEARNING", p: "$ 1.800.000" },
+            { t: "TRACK TEST", p: "$ 650.000" },
+            { t: "TRINITY – LONDON", p: "$ 800.000" }
+        ];
+
+        const grid = document.getElementById('grid-principal');
+
+        productos.forEach((item, index) => {
+            const cardId = `pieza-${index}`;
+            const wrap = document.createElement('div');
+            wrap.style.display = "flex";
+            wrap.style.flexDirection = "column";
+            
+            wrap.innerHTML = `
+                <div id="${cardId}" class="pieza">
+                    <div class="cabezote">
+                        <div class="caja-logo">
+                            <img src="logocampus.jpg" class="img-campus" onerror="this.src='https://www.campuslatinoamerica.edu.co/img/logo.png'">
+                        </div>
+                        <span style="font-size:0.5rem; font-weight:bold; color:var(--neon-azul);">CLASE MUNDIAL</span>
+                    </div>
+                    <div class="cuerpo">
+                        <span class="etiqueta">CERTIFICACIÓN OFICIAL</span>
+                        <h2>${item.t}</h2>
+                        <div class="precio-grande">${item.p}</div>
+                        <a href="https://wa.me/573144365569?text=Hola%20CampusLA,%20quiero%20info%20de%20${item.t}" target="_blank" class="wa-link">ORDENAR POR WHATSAPP</a>
+                    </div>
+                    <div class="pie">
+                        <b>EL HUB DE EDUCACIÓN MÁS GRANDE DEL MUNDO</b><br>
+                        COLOMBIA | LATAM | EUROPA
+                    </div>
+                </div>
+                <button class="boton-descarga" onclick="descargar('${cardId}', '${item.t}')">GENERAR IMAGEN</button>
+            `;
+            grid.appendChild(wrap);
+        });
+
+        function descargar(id, nombre) {
+            const el = document.getElementById(id);
+            html2canvas(el, { useCORS: true, scale: 2 }).then(canvas => {
+                let a = document.createElement('a');
+                a.download = `CampusLA-${nombre}.png`;
+                a.href = canvas.toDataURL();
+                a.click();
+            });
+        }
+    </script>
+</body>
+</html>
