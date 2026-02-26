@@ -3,78 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusLA - Portafolio de Clase Mundial</title>
+    <title>CampusLA - Filtro de Ventas Pro</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        :root { --azul: #002D54; --celeste: #00BEF2; --verde: #25D366; --fondo: #f4f7f6; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--azul); color: #333; margin: 0; padding: 20px; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .card { background: white; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
-        .card-header { background: var(--azul); padding: 15px; display: flex; justify-content: space-between; align-items: center; }
-        .logo-c { width: 110px; filter: brightness(1.2); }
-        .content { padding: 20px; flex-grow: 1; text-align: left; }
-        h2 { color: var(--azul); font-size: 1.3rem; margin: 10px 0; text-transform: uppercase; }
-        .price { font-size: 2rem; font-weight: 900; color: var(--azul); text-align: center; margin: 10px 0; }
-        .step { display: flex; align-items: center; margin-bottom: 8px; font-size: 0.8rem; }
-        .step-n { background: var(--celeste); color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-weight: bold; font-size: 0.7rem; flex-shrink: 0; }
-        .actions { padding: 15px; background: #f9f9f9; display: flex; flex-direction: column; gap: 8px; }
-        .btn-wa { background: var(--verde); color: white; text-decoration: none; padding: 10px; border-radius: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
-        .btn-dl { background: var(--azul); color: white; border: none; padding: 8px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 0.7rem; }
+        :root {
+            --azul-oscuro: #000b1a;
+            --azul-card: #002D54; 
+            --verde-neon: #39FF14;
+            --cian: #00BEF2;
+            --blanco: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--azul-oscuro);
+            color: var(--blanco);
+            margin: 0; padding: 20px; text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 40px; justify-items: center; padding-top: 30px;
+        }
+
+        /* EL DISEÑO PRO QUE TE GUSTÓ */
+        .pieza-card {
+            width: 380px;
+            height: 540px;
+            background: linear-gradient(180deg, #001a33 0%, var(--azul-card) 100%);
+            border: 3px solid var(--verde-neon);
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.3);
+        }
+
+        .header-card {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .logo-campus { width: 120px; filter: brightness(0) invert(1); }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .brand-logo { 
+            max-height: 70px; 
+            margin-bottom: 20px; 
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.4));
+        }
+
+        h2 { font-size: 1.8rem; margin: 10px 0; color: var(--cian); font-weight: 800; text-transform: uppercase; }
+
+        .precio { 
+            font-size: 3rem; 
+            font-weight: 900; 
+            color: var(--verde-neon); 
+            margin: 15px 0;
+            text-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+        }
+
+        .cta-button {
+            background: var(--verde-neon);
+            color: var(--azul-card);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .footer-card {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            font-size: 0.65rem;
+            border-top: 1px solid rgba(57, 255, 20, 0.2);
+            line-height: 1.4;
+        }
+
+        .footer-card b { color: var(--verde-neon); }
+
+        .download-btn {
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: var(--cian);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <h1 style="color:white; margin-bottom:30px;">HUB DE MARKETING - CAMPUSLA</h1>
-    <div id="grid" class="grid"></div>
+
+    <h1>CampusLA - Filtro de Ventas Pro</h1>
+    <p>LATAM / El Hub de educación más grande del Mundo</p>
+
+    <div id="portfolio-grid" class="grid"></div>
 
     <script>
         const marcas = [
-            { id: 1, n: "TOEFL ITP", p: "$ 930.000", s1: "Registro CampusLA", s2: "Simulacros ETS", s3: "Título oficial" },
-            { id: 2, n: "TOEFL iBT", p: "$ 1.500.000", s1: "Asesoría de fechas", s2: "Material Premium", s3: "Certificado Global" },
-            { id: 3, n: "OTE OXFORD", p: "$ 970.000", s1: "Inscripción rápida", s2: "Práctica adaptativa", s3: "Aval Oxford" },
-            { id: 4, n: "PEARSON VUE", p: "$ 850.000", s1: "Voucher oficial", s2: "Cita programada", s3: "Skill IT verificado" },
-            { id: 5, n: "BENCHMARK", p: "$ 780.000", s1: "Test de nivel", s2: "Análisis de fallos", s3: "Reporte Pearson" },
-            { id: 6, n: "TOEIC", p: "$ 820.000", s1: "Perfil laboral", s2: "Listening/Reading", s3: "Sello Internacional" },
-            { id: 7, n: "VUE CERTIFIED", p: "$ 1.200.000", s1: "Google/AWS/Cisco", s2: "Examen técnico", s3: "Badge Digital" },
-            { id: 8, n: "GEP EUROPA", p: "$ 1.850.000", s1: "Consultoría país", s2: "Gestión admisión", s3: "Soporte de visa" },
-            { id: 9, n: "TOEIC BY ETS", p: "$ 890.000", s1: "Inscripción Pro", s2: "Guías de estudio", s3: "Certificado ETS" },
-            { id: 10, n: "NAT-GEO LEARNING", p: "$ 1.800.000", s1: "Contenido real", s2: "Plataforma Cengage", s3: "Inglés Global" },
-            { id: 11, n: "TRACK TEST", p: "$ 650.000", s1: "Examen 100% online", s2: "Resultado en 24h", s3: "Certificado CEFR" },
-            { id: 12, n: "TRINITY LONDON", p: "$ 800.000", s1: "Enfoque oral GESE", s2: "Práctica Speaking", s3: "Título UK" }
+            { id: 1, n: "TOEFL ITP", p: "$ 930.000", l: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/ETS_logo.svg/2560px-ETS_logo.svg.png" },
+            { id: 2, n: "TOEFL iBT", p: "$ 1.500.000", l: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/ETS_logo.svg/2560px-ETS_logo.svg.png" },
+            { id: 7, n: "VUE CERTIFIED", p: "$ 1.200.000", l: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png" },
+            { id: 8, n: "GEP EUROPA", p: "$ 1.850.000", l: "https://www.campuslatinoamerica.edu.co/img/logo.png" },
+            { id: 3, n: "OTE OXFORD", p: "$ 970.000", l: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Oxford_University_Press_logo.svg/1200px-Oxford_University_Press_logo.svg.png" },
+            { id: 12, n: "TRINITY LONDON", p: "$ 800.000", l: "https://www.trinitycollege.com/themes/custom/trinity/logo.svg" }
         ];
 
-        const grid = document.getElementById('grid');
+        const grid = document.getElementById('portfolio-grid');
+
         marcas.forEach(m => {
+            const cardId = `card-${m.id}`;
             const div = document.createElement('div');
-            div.innerHTML = `<div id="card-${m.id}" class="card">
-                <div class="card-header">
-                    <img src="logocampus.jpg" class="logo-c">
-                    <span style="color:white; font-size:0.6rem; font-weight:bold;">COLOMBIA</span>
+            div.style.display = "flex";
+            div.style.flexDirection = "column";
+            div.style.alignItems = "center";
+            div.innerHTML = `
+                <div id="${cardId}" class="pieza-card">
+                    <div class="header-card">
+                        <img src="logocampus.jpg" class="logo-campus">
+                        <span style="font-size:0.6rem; color:var(--verde-neon); font-weight:bold;">COLOMBIA / LATAM</span>
+                    </div>
+                    <div class="content">
+                        <img src="${m.l}" class="brand-logo">
+                        <h2>${m.n}</h2>
+                        <div class="precio">${m.p}</div>
+                        <a href="https://wa.me/573144365569?text=Hola%20CampusLA,%20me%20interesa%20${m.n}" target="_blank" class="cta-button">CERTIFÍCATE DE CLASE MUNDIAL</a>
+                    </div>
+                    <div class="footer-card">
+                        <b>EL HUB DE EDUCACIÓN MÁS GRANDE DEL MUNDO</b><br>
+                        WhatsApp: 3144365569 | www.campuslatinoamerica.edu.co<br>
+                        NEQUI - RAPPI - FACEBOOK - CAMPUSLA
+                    </div>
                 </div>
-                <div class="content">
-                    <h2>${m.n}</h2>
-                    <div class="price">${m.p}</div>
-                    <div class="step"><span class="step-n">1</span>${m.s1}</div>
-                    <div class="step"><span class="step-n">2</span>${m.s2}</div>
-                    <div class="step"><span class="step-n">3</span>${m.s3}</div>
-                </div>
-                <div class="actions">
-                    <a href="https://wa.me/573144365569?text=Quiero%20info%20de%20${m.n}" target="_blank" class="btn-wa">SOLICITAR WHATSAPP</a>
-                    <button class="btn-dl" onclick="descargar('${m.id}')">Descargar Asset</button>
-                </div>
-            </div>`;
+                <button class="download-btn" onclick="descargar('${cardId}', '${m.n}')">Descargar Imagen</button>
+            `;
             grid.appendChild(div);
         });
 
-        function descargar(id) {
-            const el = document.getElementById(`card-${id}`);
-            const act = el.querySelector('.actions');
-            act.style.display = 'none';
-            html2canvas(el, { scale: 2 }).then(canvas => {
-                let a = document.createElement('a');
-                a.download = `CampusLA-${id}.png`;
-                a.href = canvas.toDataURL();
-                a.click();
-                act.style.display = 'flex';
+        function descargar(id, nombre) {
+            const el = document.getElementById(id);
+            const btn = el.querySelector('.cta-button');
+            btn.style.display = 'none'; // Ocultar el botón para la foto
+            
+            html2canvas(el, { useCORS: true, scale: 2 }).then(canvas => {
+                let link = document.createElement('a');
+                link.download = `CampusLA-${nombre}.png`;
+                link.href = canvas.toDataURL();
+                link.click();
+                btn.style.display = 'inline-block';
             });
         }
     </script>
