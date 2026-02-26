@@ -1,0 +1,60 @@
+</head>
+<body>
+
+    <h1 style="color:var(--cian-tech)">CAMPUSLA PORTFOLIO</h1>
+    <p>Hub de Educación - De Clase Mundial</p>
+
+    <div id="grid" class="grid"></div>
+
+    <script>
+        // Precios con el incremento de $350k incluido
+        const items = [
+            { id: "toefl", cat: "IDIOMAS", t: "TOEFL ITP", p: "$ 930.000", s1: "Inscripción oficial CampusLA", s2: "Simulacros y plataforma 24/7", s3: "Examen y título oficial" },
+            { id: "gep", cat: "GLOBAL", t: "GLOBAL EDUCATION", p: "$ 1.850.000", s1: "Consultoría de país y carrera", s2: "Gestión de admisión europea", s3: "Asesoría de visa y viaje" }
+        ];
+
+        const grid = document.getElementById('grid');
+
+        items.forEach(i => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <div id="card-${i.id}" class="card">
+                    <div class="card-header">
+                        <img src="logocampus.jpg" class="logo-campus" alt="CampusLA">
+                        <span class="category">${i.cat}</span>
+                    </div>
+                    <div class="content">
+                        <h2>${i.t}</h2>
+                        <div class="price">${i.p}</div>
+                        <div class="steps">
+                            <div class="step"><span class="step-num">1</span>${i.s1}</div>
+                            <div class="step"><span class="step-num">2</span>${i.s2}</div>
+                            <div class="step"><span class="step-num">3</span>${i.s3}</div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <a href="https://wa.me/573144365569?text=Hola%20CampusLA,%20quiero%20info%20de%20${i.t}" target="_blank" class="btn-wa">
+                            SOLICITAR POR WHATSAPP
+                        </a>
+                        <button class="btn-dl" onclick="descargar('${i.id}')">Descargar para Redes</button>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(div);
+        });
+
+        function descargar(id) {
+            const el = document.getElementById(`card-${id}`);
+            const btn = el.querySelector('.actions');
+            btn.style.display = 'none';
+            html2canvas(el, { scale: 2 }).then(canvas => {
+                let a = document.createElement('a');
+                a.download = `CampusLA-${id}.png`;
+                a.href = canvas.toDataURL();
+                a.click();
+                btn.style.display = 'flex';
+            });
+        }
+    </script>
+</body>
+</html>
